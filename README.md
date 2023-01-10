@@ -1,3 +1,4 @@
 # golang_udemy
 
-taking a udemy course ti develop my test skol
+taking a udemy course ti develop my test skills
+https://github.com/StephenGrider/GoCasts
