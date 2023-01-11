@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestPrint(t *testing.T) {
 	
@@ -11,5 +14,19 @@ func TestPrint(t *testing.T) {
 
 	if got != want {
 		t.Errorf("got %q wanted %q", got, want)
+	}
+}
+func TestDeal(t *testing.T) {
+	
+	cards := deck{"hi", "How", "are", "you"}
+
+	have,got := cards.Deal(3)
+	want,value := cards[:3], cards[3:]
+
+	if !reflect.DeepEqual(have, want) {
+		t.Errorf("have %q but wanted %q",have, want)
+	}
+	if !reflect.DeepEqual(got, value) {
+		t.Errorf("got %q but wanted %q",got, value)
 	}
 }

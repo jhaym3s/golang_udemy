@@ -24,3 +24,9 @@ func NewDeck() deck {
 	}
 	return cards
 }
+
+func (d deck) Deal(numberToDeal int) (d1,d2 deck){
+	d1 = d[:numberToDeal]
+	d2 = d[numberToDeal:]
+	return d1,d2
+}
