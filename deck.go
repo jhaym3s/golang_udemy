@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"os"
 	"strings"
 )
@@ -36,19 +37,28 @@ func (d deck) Deal(numberToDeal int) (d1,d2 deck){
 	return d1,d2
 }
 
-func (d deck)SaveToDrive(fileName string) error {
+
+
+ func (d deck) toString() string {
+	deckToStringSlice := []string(d)
+	deckToString := strings.Join(deckToStringSlice, ",")
+	return deckToString
+ }
+
+ func (d deck)SaveToDrive(fileName string) error {
 	deckString := d.toString()
 	byteToSave := []byte(deckString)
+	//defer byteToSave.close
 	err := os.WriteFile(fileName,byteToSave,0666)
 	return err
 }
 
- func (d deck) toString() string {
-	deckToStringSlice := []string(d)
-
-	deckToString := strings.Join(deckToStringSlice, ",")
-
-	return deckToString
-
-	
- }
+func readFromDrive(fileName string)deck{ 
+	file, err := os.ReadFile(fileName)
+	if err != nil {
+		log.Fatalf("failed creating file: %s", err)
+	}
+	deckString := string(file)
+	deckStringSlice := strings.Split(deckString,",")
+return deck(deckStringSlice)
+}
