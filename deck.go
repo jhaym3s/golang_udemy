@@ -1,5 +1,10 @@
 package main
 
+import (
+	"os"
+	"strings"
+)
+
 
 type deck []string
 
@@ -30,3 +35,20 @@ func (d deck) Deal(numberToDeal int) (d1,d2 deck){
 	d2 = d[numberToDeal:]
 	return d1,d2
 }
+
+func (d deck)SaveToDrive(fileName string) error {
+	deckString := d.toString()
+	byteToSave := []byte(deckString)
+	err := os.WriteFile(fileName,byteToSave,0666)
+	return err
+}
+
+ func (d deck) toString() string {
+	deckToStringSlice := []string(d)
+
+	deckToString := strings.Join(deckToStringSlice, ",")
+
+	return deckToString
+
+	
+ }
