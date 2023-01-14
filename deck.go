@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"math/rand"
 	"os"
 	"strings"
 )
@@ -61,4 +62,11 @@ func readFromDrive(fileName string)deck{
 	deckString := string(file)
 	deckStringSlice := strings.Split(deckString,",")
 return deck(deckStringSlice)
+}
+
+func (d deck) shuffle()  {
+	for i := range d {
+		newPosition :=	rand.Intn(len(d)-1)
+		d[i], d[newPosition] = d[newPosition], d[i] 
+	}
 }
