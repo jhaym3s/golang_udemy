@@ -9,9 +9,7 @@ func main() {
 	newDeck := readFromDrive("decks")
 	fmt.Println(newDeck.printCards())
 
-	newPerson := Person{name: "Jhaymes", age: 30}
-
-	fmt.Println(newPerson.Birthday())
-
-	fmt.Println(newPerson.pointerAge())
+	wallet := Wallet{currency: "Bitcoin",balance: 30}
+	wallet.Deposit(50)
+	fmt.Println(wallet.sum())
 }

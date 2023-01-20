@@ -1,22 +1,17 @@
 package main
 
 import "fmt"
-
-type Person struct{
-	name string;
-	age int;
+type Wallet struct{
+	balance int
+	currency string
 }
 
-func (p Person)PrintName()  {
-fmt.Printf(p.name)
-}
+ func (w *Wallet)Deposit(amount int)  {
+	w.balance = w.balance+amount
+	fmt.Printf("%d %s was deposited ",w.balance, w.currency)
+ }
 
-func (p *Person) Birthday() int {
-	newAge:= p.age+1
-	return newAge
-}
+ func (w *Wallet) sum() int {
+	return w.balance
+ }
 
-func (p *Person) pointerAge() int {
-	
-	return p.age
-}
