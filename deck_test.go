@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"reflect"
 	"testing"
 )
@@ -51,5 +52,16 @@ expectedLast := "four of clubs "
 if lastCard != expectedLast {
 	t.Errorf("got %s wanted %s", lastCard, expectedLast)
 }
+}
 
+func TestSaveToDrive(t *testing.T) {
+	os.Remove("fileDeckTest")
+	d := NewDeck()
+	d.SaveToDrive("fileDeckTest")
+	
+	testDeckFromDrive := readFromDrive("fileDeckTest")
+
+	if !reflect.DeepEqual(d, testDeckFromDrive) {
+		t.Error("got the wrong file")
+	}
 }

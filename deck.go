@@ -51,6 +51,7 @@ func (d deck) Deal(numberToDeal int) (d1,d2 deck){
 	deckString := d.toString()
 	byteToSave := []byte(deckString)
 	//defer byteToSave.close
+
 	err := os.WriteFile(fileName,byteToSave,0666)
 	return err
 }
