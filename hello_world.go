@@ -15,4 +15,16 @@ func main() {
 	jhaymes := Person{name: "Paulinus"}
 	jhaymes.updateName("James")
 	fmt.Println(jhaymes.printName())
+
+	names := map[int]string{
+		
+		0: "jhaymes",
+		1: "cool",
+		2: "name",
+		4: "last",
+
+	}
+	iterateMaps(names)
+	printMaps(names)
+	iterateMaps(names)
 }
