@@ -11,5 +11,8 @@ func main() {
 
 	wallet := Wallet{currency: "Bitcoin",balance: 30}
 	wallet.Deposit(50)
-	fmt.Println(wallet.sum())
+	fmt.Printf("wallet sum %d", wallet.sum())
+	jhaymes := Person{name: "Paulinus"}
+	jhaymes.updateName("James")
+	fmt.Println(jhaymes.printName())
 }
