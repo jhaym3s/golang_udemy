@@ -1,32 +1,30 @@
 package main
 
+import (
+	"fmt"
+	"net/http"
+)
+
 //import "fmt"
 
-
-
-
 func main() {
-	// newDeck := readFromDrive("decks")
-	// fmt.Println(newDeck.printCards())
+	sites := []string{
+		"https://github.com",
+		"https://stackoverflow.com/",
+		"https://www.jhaymes.com/",
+		"https://www.instagram.com/",
+	}
+	fmt.Println(sites)
 
-	// wallet := Wallet{currency: "Bitcoin",balance: 30}
-	// wallet.Deposit(50)
-	// fmt.Printf("wallet sum %d", wallet.sum())
-	// jhaymes := Person{name: "Paulinus"}
-	// jhaymes.updateName("James")
-	// fmt.Println(jhaymes.printName())
-
-	// names := map[int]string{
+	for _, v := range sites {
+		go func() {
+			fmt.Println(v)
+		}()
 		
-	// 	0: "jhaymes",
-	// 	1: "cool",
-	// 	2: "name",
-	// 	4: "last",
+	}
+}
 
-	// }
-	// iterateMaps(names)
-	// printMaps(names)
-	// iterateMaps(names)
-	chatGPT()
-	getRequestCustom()
+func checkWebsites(site string) bool {
+	_,err :=	http.Get(site)
+	return err ==nil
 }
